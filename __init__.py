@@ -134,7 +134,7 @@ class JLCSMTPlugin(pcbnew.ActionPlugin):
 
     def Run(self):
         board = pcbnew.GetBoard()
-        modules = board.GetModules()
+        modules = board.GetFootprints()
 
         fn = Path(board.GetFileName()).with_suffix("")
 
@@ -162,7 +162,6 @@ class JLCSMTPlugin(pcbnew.ActionPlugin):
 
             pos = mod.GetPosition()
             rot = mod.GetOrientationDegrees()
-            desc = mod.GetDescription()
             layer = board.GetLayerName(mod.GetLayer())
             mid_x = Decimal(pos[0]) / Decimal(1000000)
             mid_y = Decimal(pos[1]) / Decimal(-1000000)
