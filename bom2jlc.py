@@ -60,8 +60,7 @@ for comp in root.iter("comp"):
 
     footprint = comp.find("footprint").text
 
-    o = comp.find("fields/field[@name='MPN']")
-    mpn = "" if o is None else o.text
+    mpn = comp.findtext("fields/field[@name='MPN']", default="")
 
     if mpn.lower() == "dnp":
         continue
